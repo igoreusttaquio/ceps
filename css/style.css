@@ -80,4 +80,15 @@ table {
     max-width: 500px;
     border: 1px solid #94b5c0;
     color: #726a95;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #94b5c0;
+    padding: 4px;
+    text-transform: capitalize;
+}
+
+#Ceptable {
+    visibility: hidden;
 }
