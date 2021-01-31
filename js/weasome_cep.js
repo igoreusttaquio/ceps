@@ -22,15 +22,8 @@
             }
         };
 
-        try {
-            xhttp.open("GET", url, true);
-            if (xhttp.send().status == 404) {
-                alert("Cep Não encontrado");
-                return;
-            };
-        } catch (e) {
-            markTable("{}");
-        }
+        xhttp.open("GET", url, true);
+        xhttp.send();
     }
 
     function markTable(cepIfoString) {
