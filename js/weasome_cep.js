@@ -2,6 +2,7 @@
     const cepInput = document.getElementById("cepInput");
     const cepForm = document.getElementById("cepForm");
     const ceptable = document.getElementById("Ceptable");
+    const pErrorMessage = document.getElementById("errorMessage");
 
     let url = "https://cep.awesomeapi.com.br/json/";
 
@@ -16,9 +17,9 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && (this.status == 200)) {
-                if (xhttp.responseText) {
-                    markTable(xhttp.responseText);
-                }
+                markTable(xhttp.responseText);
+            } else {
+                errorInfo(xhttp.responseText);
             }
         };
 
@@ -39,11 +40,26 @@
         }
     }
 
+
+    function errorInfo(cepIfoString) {
+        const cepIfoObject = JSON.parse(cepIfoString);
+        if (cepIfoObject.message) {
+            pErrorMessage.style.visibility = "visible";
+            pErrorMessage.textContent = cepIfoObject.message;
+            cepInfoBody.innerHTML = "";
+        } else {
+            pErrorMessage.style.visibility = "hidden";
+            pErrorMessage.innerHTML = "";
+        }
+    }
+
+
     function createTable(prop, value) {
 
         tr = document.createElement("tr");
         tdProp = document.createElement("td");
         tdValue = document.createElement("td");
+
         tdProp.innerText = prop.split('_').join(' ');
         tdValue.innerText = value;
 
@@ -54,5 +70,4 @@
         ceptable.style.visibility = "visible";
     }
 
-
-})()
+})();
