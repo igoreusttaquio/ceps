@@ -42,7 +42,9 @@
 
 
     function errorInfo(cepIfoString) {
-        const cepIfoObject = JSON.parse(cepIfoString);
+        const cepIfoObject = typeof cepIfoString == "string" ?
+            JSON.parse(cepIfoString) : cepIfoString;
+
         if (cepIfoObject.message) {
             pErrorMessage.style.visibility = "visible";
             pErrorMessage.textContent = cepIfoObject.message;
