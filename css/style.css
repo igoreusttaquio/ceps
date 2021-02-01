@@ -92,3 +92,10 @@ td {
 #Ceptable {
     visibility: hidden;
 }
+
+#errorMessage {
+    padding: 10px;
+    background: #ffb4b4;
+    color: #ec4646;
+    visibility: hidden;
+}
