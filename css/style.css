@@ -89,9 +89,6 @@ td {
     text-transform: capitalize;
 }
 
-#Ceptable {
-    visibility: hidden;
-}
 
 #errorMessage {
     padding: 10px;
@@ -101,7 +98,7 @@ td {
 }
 
 .visible {
-    visibility: visible;
+    visibility: visible!important;
 }
 
 .hidden {

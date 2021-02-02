@@ -46,11 +46,14 @@
             JSON.parse(cepIfoString) : cepIfoString;
 
         if (cepIfoObject.message) {
+            removeStyle(pErrorMessage, 'hidden');
+            setStyle(ceptable, 'hidden');
             setStyle(pErrorMessage, 'visible');
             pErrorMessage.textContent = cepIfoObject.message;
             cepInfoBody.innerHTML = "";
         } else {
-            pErrorMessage.style.visibility = "hidden";
+            removeStyle(pErrorMessage, 'visible');
+            setStyle(pErrorMessage, 'hidden');
             pErrorMessage.innerHTML = "";
         }
     }
@@ -70,10 +73,14 @@
 
         cepInfoBody.appendChild(tr);
         setStyle(ceptable, 'visible');
+        removeStyle(ceptable, 'hidden');
     }
 
     function setStyle(element, class_) {
         element.classList.add(`${class_}`);
     }
 
+    function removeStyle(element, class_) {
+        element.classList.remove(`${class_}`);
+    }
 })();
