@@ -99,3 +99,11 @@ td {
     color: #ec4646;
     visibility: hidden;
 }
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}

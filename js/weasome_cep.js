@@ -46,7 +46,7 @@
             JSON.parse(cepIfoString) : cepIfoString;
 
         if (cepIfoObject.message) {
-            pErrorMessage.style.visibility = "visible";
+            setStyle(pErrorMessage, 'visible');
             pErrorMessage.textContent = cepIfoObject.message;
             cepInfoBody.innerHTML = "";
         } else {
@@ -69,7 +69,11 @@
         tr.appendChild(tdValue);
 
         cepInfoBody.appendChild(tr);
-        ceptable.style.visibility = "visible";
+        setStyle(ceptable, 'visible');
+    }
+
+    function setStyle(element, class_) {
+        element.classList.add(`${class_}`);
     }
 
 })();
