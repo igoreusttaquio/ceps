@@ -24,7 +24,9 @@
         };
 
         xhttp.open("GET", url, true);
-        xhttp.send();
+        if (!xhttp.send()) {
+            alert('CEP Iválido ou inexistente.');
+        }
     }
 
     function markTable(cepIfoString) {
