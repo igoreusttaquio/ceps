@@ -1,14 +1,20 @@
 ; (function () {
-    const cepInput = document.getElementById("cepInput");
-    const cepForm = document.getElementById("cepForm");
-    const ceptable = document.getElementById("Ceptable");
-    const pErrorMessage = document.getElementById("errorMessage");
+    function getDomElements() {
+        return {
+            cepInput: document.getElementById("cepInput"),
+            cepForm: document.getElementById("cepForm"),
+            ceptable: document.getElementById("Ceptable"),
+            pErrorMessage: document.getElementById("errorMessage")
+        }
+    }
+
+    const domElements = getDomElements();
 
     let url = "https://cep.awesomeapi.com.br/json/";
 
-    cepForm.addEventListener("submit", (event) => {
+    domElements.cepForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        findCep(cepInput.value, url);
+        findCep(domElements.cepInput.value, url);
     })
 
     function findCep(cepNumber, url) {
@@ -48,15 +54,15 @@
             JSON.parse(cepIfoString) : cepIfoString;
 
         if (cepIfoObject.message) {
-            removeStyle(pErrorMessage, 'hidden');
-            setStyle(ceptable, 'hidden');
-            setStyle(pErrorMessage, 'visible');
-            pErrorMessage.textContent = cepIfoObject.message;
+            removeStyle(domElements.pErrorMessage, 'hidden');
+            setStyle(domElements.ceptable, 'hidden');
+            setStyle(domElements.pErrorMessage, 'visible');
+            domElements.pErrorMessage.textContent = cepIfoObject.message;
             cepInfoBody.innerHTML = "";
         } else {
-            removeStyle(pErrorMessage, 'visible');
-            setStyle(pErrorMessage, 'hidden');
-            pErrorMessage.innerHTML = "";
+            removeStyle(domElements.pErrorMessage, 'visible');
+            setStyle(domElements.pErrorMessage, 'hidden');
+            domElements.pErrorMessage.innerHTML = "";
         }
     }
 
@@ -74,8 +80,8 @@
         tr.appendChild(tdValue);
 
         cepInfoBody.appendChild(tr);
-        setStyle(ceptable, 'visible');
-        removeStyle(ceptable, 'hidden');
+        setStyle(domElements.ceptable, 'visible');
+        removeStyle(domElements.ceptable, 'hidden');
     }
 
     function setStyle(element, class_) {
