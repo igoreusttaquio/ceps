@@ -83,9 +83,13 @@
         }
     }
 
-    let url = "https://cep.awesomeapi.com.br/json/";
-    domElements.cepForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        findCep(domElements.cepInput.value, url);
-    })
+    function run() {
+        let url = "https://cep.awesomeapi.com.br/json/";
+        domElements.cepForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            findCep(domElements.cepInput.value, url);
+        })
+    }
+
+    run();
 })();
